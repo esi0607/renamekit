@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>파일명 일괄 변경 사용법 — 규칙 12가지와 실전 예시 | RenameKit</title>
+<meta name="description" content="zip 파일 하나로 수백 개 파일명을 한 번에 바꾸는 방법을 단계별로 정리했습니다. 접두어·접미어·번호·날짜·확장자 규칙 12가지와 사진 정리, 납품용 파일명 정리 같은 실전 예시를 담았습니다." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#4f46e5" />
+<meta property="og:title" content="파일명 일괄 변경 사용법 — 규칙 12가지와 실전 예시" />
+<meta property="og:description" content="접두어·접미어·번호·날짜·확장자 규칙 12가지와 실전 예시를 단계별로 정리했습니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://renamekit.pages.dev/guide.html" />
+<meta property="og:site_name" content="RenameKit" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:image" content="https://renamekit.pages.dev/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="canonical" href="https://renamekit.pages.dev/guide.html" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="./">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <span class="brand-name">RenameKit</span>
+    </a>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <a href="./">도구</a>
+      <a href="guide.html" aria-current="page">사용법</a>
+      <a href="faq.html">자주 묻는 질문</a>
+      <a href="about.html">소개</a>
+    </nav>
+    <div class="header-right">
+      <a class="btn btn-primary btn-sm" href="./">파일명 바꾸기</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="doc">
+    <h1>파일명 일괄 변경 사용법</h1>
+    <p class="doc-meta">최종 수정 2026년 10월 28일 · 읽는 시간 약 8분</p>
+
+    <p>
+      사진 300장, 회의 자료 50개, 납품 파일 80개의 이름을 하나씩 바꾸고 있다면
+      손목이 먼저 망가집니다. 이 문서는 <a href="./">RenameKit</a>으로 그 작업을
+      <strong>5분 안에 끝내는 방법</strong>을 순서대로 설명합니다.
+    </p>
+
+    <div class="toc">
+      <p>목차</p>
+      <ol>
+        <li><a href="#prepare">준비: zip 하나로 모으기</a></li>
+        <li><a href="#step">3단계 사용법</a></li>
+        <li><a href="#rules">규칙 12가지</a></li>
+        <li><a href="#examples">실전 예시 4가지</a></li>
+        <li><a href="#compare">다른 방법과 비교</a></li>
+        <li><a href="#mistakes">자주 하는 실수</a></li>
+      </ol>
+    </div>
+
+    <h2 id="prepare">1. 준비: zip 하나로 모으기</h2>
+
+    <p>
+      이 도구는 <strong>zip 파일을 받아서 zip 파일로 돌려줍니다.</strong> 이름을 바꾸고 싶은
+      파일들을 한 폴더에 모은 뒤 zip으로 압축하세요.
+    </p>
+
+    <h3>윈도우</h3>
+    <p>
+      파일을 모두 선택 → 마우스 오른쪽 버튼 → <strong>보내기 → 압축(zip) 폴더</strong>.
+      또는 선택 후 <strong>압축 → ZIP 파일</strong>.
+    </p>
+
+    <h3>맥</h3>
+    <p>
+      파일을 모두 선택 → 마우스 오른쪽 버튼 → <strong>압축</strong>. 선택한 항목들이
+      <code>아카이브.zip</code> 하나로 묶입니다.
+    </p>
+
+    <div class="note">
+      <p>
+        <strong>폴더째 넣어도 됩니다.</strong> zip 안에 하위 폴더가 있으면 그 구조를 유지한 채
+        파일 이름만 바뀝니다. 예를 들어 <code>사진/IMG_0001.jpg</code>는
+        <code>사진/photo_001.jpg</code>처럼 폴더는 그대로 남습니다.
+      </p>
+      <p>
+        <strong>zip 없이 파일만 끌어다 놔도 됩니다.</strong> 이 경우 결과는 zip 하나로 묶여서
+        내려받아집니다.
+      </p>
+    </div>
+
+    <h2 id="step">2. 3단계 사용법</h2>
+
+    <h3>1단계 — 파일 넣기</h3>
+    <p>
+      <a href="./">메인 화면</a>의 점선 상자에 zip을 끌어다 놓거나 <strong>파일 선택</strong>
+      버튼을 누르세요. 파일은 <strong>브라우저 메모리에서만</strong> 처리되고 어디로도 전송되지
+      않습니다. 그래서 인터넷이 끊겨도 동작합니다.
+    </p>
+
+    <h3>2단계 — 규칙 정하기</h3>
+    <p>
+      <strong>빠른 시작</strong> 버튼 8개 중 하나를 누르면 아래 규칙 칸이 자동으로 채워집니다.
+      그대로 눌러도 되고, 숫자나 글자만 고쳐도 됩니다. 규칙은 <strong>위에서부터 차례대로</strong>
+      적용되므로, 순서를 바꾸면 결과도 달라집니다.
+    </p>
+
+    <h3>3단계 — 확인하고 내려받기</h3>
+    <p>
+      미리보기 표에서 <strong>변경 전 / 변경 후 / 상태</strong>를 한 줄씩 비교하세요.
+      문제가 있으면 그 줄에 <span class="chip warn">확인</span> 또는
+      <span class="chip error">오류</span> 표시가 붙습니다. 만족스러우면
+      <strong>이름 바꾼 zip 다운로드</strong>를 누르면 끝입니다.
+    </p>
+
+    <div class="note">
+      <p>
+        <strong>원본은 절대 바뀌지 않습니다.</strong> 다운로드되는 것은 이름이 바뀐 사본이 담긴
+        새 zip입니다. 잘못 바꿨으면 원본 zip을 다시 넣고 규칙만 고치면 됩니다.
+      </p>
+    </div>
+
+    <h2 id="rules">3. 규칙 12가지</h2>
+
+    <p>규칙 칸의 드롭다운에서 고를 수 있는 항목입니다.</p>
+
+    <table>
+      <thead>
+        <tr><th>규칙</th><th>하는 일</th><th>예시</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>앞에 붙이기</td>
+          <td>이름 맨 앞에 글자를 붙입니다.</td>
+          <td><code>a.jpg</code> → <code>2026_a.jpg</code></td>
+        </tr>
+        <tr>
+          <td>앞부분 지우기</td>
+          <td>정해진 글자로 시작하면 그 부분을 지웁니다.</td>
+          <td><code>IMG_2847.jpg</code> → <code>2847.jpg</code></td>
+        </tr>
+        <tr>
+          <td>글자 수로 지우기</td>
+          <td>앞 또는 뒤에서 몇 글자를 지웁니다. 값이 규칙적이지 않을 때 유용합니다.</td>
+          <td><code>Screenshot_2026_10.png</code> → <code>2026_10.png</code></td>
+        </tr>
+        <tr>
+          <td>뒤에 붙이기</td>
+          <td>이름 맨 뒤(확장자 앞)에 글자를 붙입니다.</td>
+          <td><code>보고서.docx</code> → <code>보고서_최종.docx</code></td>
+        </tr>
+        <tr>
+          <td>뒷부분 지우기</td>
+          <td>정해진 글자로 끝나면 그 부분을 지웁니다.</td>
+          <td><code>보고서_복사본.docx</code> → <code>보고서.docx</code></td>
+        </tr>
+        <tr>
+          <td>찾아서 바꾸기</td>
+          <td>특정 글자를 다른 글자로 바꿉니다.</td>
+          <td><code>KakaoTalk_</code> → (빈칸)</td>
+        </tr>
+        <tr>
+          <td>번호 매기기</td>
+          <td>순서대로 번호를 붙입니다. 자릿수와 시작 번호를 정할 수 있습니다.</td>
+          <td><code>photo_001</code>, <code>photo_002</code> …</td>
+        </tr>
+        <tr>
+          <td>날짜 형식 통일</td>
+          <td>오늘 날짜나 고정 날짜를 붙입니다. 형식은 3가지.</td>
+          <td><code>2026-10-28</code>, <code>20261028</code>, <code>261028</code></td>
+        </tr>
+        <tr>
+          <td>안전한 문자로 정리</td>
+          <td>공백·특수문자를 밑줄이나 하이픈으로 바꿉니다.</td>
+          <td><code>최종 보고서 (1).docx</code> → <code>최종_보고서_1.docx</code></td>
+        </tr>
+        <tr>
+          <td>대소문자</td>
+          <td>전부 소문자 또는 전부 대문자로 바꿉니다.</td>
+          <td><code>IMG_0001.JPG</code> → <code>img_0001.jpg</code></td>
+        </tr>
+        <tr>
+          <td>확장자 변경</td>
+          <td>확장자만 바꿉니다. 이름 부분은 건드리지 않습니다.</td>
+          <td><code>a.jpeg</code> → <code>a.jpg</code></td>
+        </tr>
+        <tr>
+          <td>길이 자르기</td>
+          <td>이름이 너무 길 때 뒤를 잘라냅니다.</td>
+          <td>60자 → 40자</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>미리보기 정렬: 자연순 vs 원본순</h3>
+    <p>
+      미리보기 오른쪽 위의 토글로 표시 순서를 바꿀 수 있습니다.
+    </p>
+    <ul>
+      <li>
+        <strong>자연순</strong> — 사람이 보기 좋은 순서. <code>1, 2, 3, …, 10</code>.
+        기본값입니다.
+      </li>
+      <li>
+        <strong>원본순</strong> — zip 안에 실제로 저장된 순서. 압축 프로그램이 만든
+        순서를 그대로 보여줍니다.
+      </li>
+    </ul>
+    <p>
+      <strong>번호 매기기 규칙은 화면에 표시된 순서를 따릅니다.</strong> 그래서 원본순일 때와
+      자연순일 때 번호가 다르게 붙을 수 있습니다. 사진 순서를 맞추고 싶다면 자연순이
+      거의 항상 정답입니다.
+    </p>
+
+    <h2 id="examples">4. 실전 예시 4가지</h2>
+
+    <h3>예시 1 — 휴대폰 사진을 순서대로 정리</h3>
+    <p>
+      <code>IMG_2847.jpg</code>부터 <code>IMG_3100.jpg</code>까지 254장이 있다고 가정합니다.
+    </p>
+    <ol>
+      <li>사진을 한 폴더에 모아 zip으로 압축</li>
+      <li>빠른 시작에서 <strong>사진 순번 매기기</strong> 클릭</li>
+      <li>접두어를 <code>여행_</code>으로 수정</li>
+      <li>결과: <code>여행_001.jpg</code>, <code>여행_002.jpg</code> …</li>
+    </ol>
+    <p>
+      원본 파일명이 뒤죽박죽이어도 <strong>자연순 정렬</strong>이 숫자를 크기대로 읽기 때문에
+      <code>IMG_999</code>가 <code>IMG_1000</code>보다 앞에 오는 사고가 없습니다.
+    </p>
+
+    <h3>예시 2 — 캡처·카카오톡 접두어 제거</h3>
+    <p>
+      <code>Screenshot_2026-10-28-143022.png</code> 같은 이름에서 앞부분을 잘라냅니다.
+    </p>
+    <ol>
+      <li><strong>앞부분 지우기</strong> 규칙 선택</li>
+      <li>값에 <code>Screenshot_</code> 입력</li>
+      <li>결과: <code>2026-10-28-143022.png</code></li>
+    </ol>
+    <p>
+      카카오톡은 <code>KakaoTalk_20261028_143022123.jpg</code>처럼 붙입니다.
+      <strong>찾아서 바꾸기</strong>로 <code>KakaoTalk_</code>를 빈칸으로 바꾸면 됩니다.
+    </p>
+
+    <h3>예시 3 — 납품 전 군더더기 정리</h3>
+    <p>
+      <code>최종 보고서 (1).docx</code>, <code>최종 보고서 (2).docx</code> 같은 이름은
+      받는 쪽에서 헷갈립니다. 규칙 두 개를 이어 붙이세요.
+    </p>
+    <ol>
+      <li><strong>안전한 문자로 정리</strong> — 공백과 괄호를 밑줄로</li>
+      <li><strong>번호 매기기</strong> — 자릿수 2, 접두어 <code>보고서_</code></li>
+    </ol>
+    <p>결과: <code>보고서_01.docx</code>, <code>보고서_02.docx</code> …</p>
+
+    <h3>예시 4 — 웹에 올릴 파일명을 안전하게</h3>
+    <p>
+      한글·공백·<code>#</code>, <code>?</code> 같은 문자는 URL에서 깨지거나 잘립니다.
+    </p>
+    <ol>
+      <li><strong>안전한 문자로 정리</strong></li>
+      <li><strong>대소문자 → 소문자</strong></li>
+      <li><strong>확장자 변경</strong> → <code>jpg</code></li>
+    </ol>
+    <p>
+      결과는 <code>product_main_01.jpg</code>처럼 어디서나 안전한 형태가 됩니다.
+    </p>
+
+    <h2 id="compare">5. 다른 방법과 비교</h2>
+
+    <table>
+      <thead>
+        <tr><th>방법</th><th>장점</th><th>한계</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>윈도우 탐색기 일괄 이름 바꾸기</td>
+          <td>설치 없이 F2로 바로</td>
+          <td>접두어·번호만 가능. 확장자·조건부 삭제 불가</td>
+        </tr>
+        <tr>
+          <td>파워셸 <code>Rename-Item</code></td>
+          <td>무한히 유연</td>
+          <td>명령어를 알아야 하고, 실수하면 되돌리기 어려움</td>
+        </tr>
+        <tr>
+          <td>엑셀로 목록 만들어 복사</td>
+          <td>규칙을 눈으로 확인 가능</td>
+          <td>파일명 복사·붙여넣기 과정에서 확장자 사고가 잦음</td>
+        </tr>
+        <tr>
+          <td>전용 프로그램 설치</td>
+          <td>기능이 많음</td>
+          <td>설치·광고·라이선스 부담. 회사 PC에서는 설치 자체가 문제</td>
+        </tr>
+        <tr>
+          <td><strong>RenameKit</strong></td>
+          <td>설치 없음, 미리보기로 실수 방지, 서버 전송 없음</td>
+          <td>브라우저 메모리 사용 (500MB 이하 권장)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="mistakes">6. 자주 하는 실수</h2>
+
+    <h3>실수 1 — 확장자까지 바꿔버림</h3>
+    <p>
+      <strong>찾아서 바꾸기</strong>로 <code>.</code>을 지우면 확장자까지 사라져서 파일이
+      열리지 않습니다. 확장자는 반드시 <strong>확장자 변경</strong> 규칙으로만 다루세요.
+      미리보기 표에서 확장자가 사라진 줄이 있으면 즉시 알 수 있습니다.
+    </p>
+
+    <h3>실수 2 — 규칙 순서를 반대로 넣음</h3>
+    <p>
+      <strong>번호 매기기</strong> 뒤에 <strong>앞부분 지우기</strong>를 넣으면 방금 붙인 번호가
+      지워집니다. 규칙은 위에서 아래로 적용된다는 점을 기억하세요.
+    </p>
+
+    <h3>실수 3 — 이름이 중복됨</h3>
+    <p>
+      규칙을 잘못 넣어 두 파일이 같은 이름이 되면 미리보기에
+      <span class="chip error">오류</span>로 표시됩니다. 이 상태로 내려받으면 하나가 사라질 수
+      있으니, 반드시 오류 표시가 없는 상태에서 다운로드하세요.
+    </p>
+
+    <div class="note">
+      <p>
+        <strong>안전 장치:</strong> 원본 zip은 그대로 남습니다. 이름이 꼬였으면 원본으로 다시
+        시작하면 되고, 다운로드한 결과물만 지우면 됩니다.
+      </p>
+    </div>
+
+    <h2>더 알아보기</h2>
+    <ul>
+      <li><a href="faq.html">자주 묻는 질문 15개</a> — 한글 깨짐, 대용량, 압축 형식 등</li>
+      <li><a href="about.html">사이트 소개</a> — 어떻게 서버 없이 동작하는지</li>
+      <li><a href="privacy.html">개인정보처리방침</a> — 수집하는 정보가 없다는 것의 의미</li>
+    </ul>
+
+    <a class="back" href="./">← 파일명 바꾸러 가기</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>RenameKit</span>
+    <nav class="footer-nav" aria-label="사이트 정보">
+      <a href="guide.html">사용법</a>
+      <a href="faq.html">자주 묻는 질문</a>
+      <a href="about.html">소개</a>
+      <a href="privacy.html">개인정보처리방침</a>
+    </nav>
+    <span class="muted">모든 처리는 브라우저에서 이루어집니다.</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "파일명 일괄 변경 사용법 — 규칙 12가지와 실전 예시",
+  "description": "zip 파일 하나로 수백 개 파일명을 한 번에 바꾸는 방법과 규칙 12가지, 실전 예시를 정리한 문서.",
+  "inLanguage": "ko",
+  "datePublished": "2026-10-28",
+  "dateModified": "2026-10-28",
+  "mainEntityOfPage": "https://renamekit.pages.dev/guide.html",
+  "author": { "@type": "Organization", "name": "RenameKit" },
+  "publisher": { "@type": "Organization", "name": "RenameKit" }
+}
+</script>
+</body>
+</html>

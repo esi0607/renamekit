@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>파일명 일괄 변경 - 설치 없이 브라우저에서 | RenameKit</title>
+<meta name="description" content="zip 파일이나 사진을 끌어다 놓으면 파일명을 한 번에 바꿔서 돌려드립니다. 설치 없이 브라우저에서만 동작하고, 파일은 서버로 전송되지 않습니다." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#4f46e5" />
+<meta name="author" content="RenameKit" />
+<meta property="og:title" content="파일명 일괄 변경 - 설치 없이 브라우저에서" />
+<meta property="og:description" content="zip 파일을 올리면 이름을 일괄 변경해서 새 zip으로 돌려드립니다. 서버 전송 없음." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://renamekit.pages.dev/" />
+<meta property="og:site_name" content="RenameKit" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:image" content="https://renamekit.pages.dev/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="RenameKit - 파일명 일괄 변경" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="파일명 일괄 변경 - 설치 없이 브라우저에서" />
+<meta name="twitter:description" content="zip 파일을 올리면 이름을 일괄 변경해서 새 zip으로 돌려드립니다. 서버 전송 없음." />
+<meta name="twitter:image" content="https://renamekit.pages.dev/og.png" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="canonical" href="https://renamekit.pages.dev/" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="./">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <span class="brand-name">RenameKit</span>
+    </a>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <a href="./" aria-current="page" data-i18n="nav.tool">도구</a>
+      <a href="guide.html" data-i18n="nav.guide">사용법</a>
+      <a href="faq.html" data-i18n="nav.faq">자주 묻는 질문</a>
+      <a href="about.html" data-i18n="nav.about">소개</a>
+    </nav>
+    <div class="header-right">
+      <span class="badge" data-i18n="header.badge">서버 전송 없음</span>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" class="lang-btn" data-lang="ko">KO</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <h1 data-i18n="hero.title">파일명 일괄 변경</h1>
+    <p class="lead" data-i18n="hero.sub">zip 파일이나 파일들을 끌어다 놓고 규칙을 고르면, 이름을 한 번에 바꿔서 돌려드립니다. 설치 없이 브라우저에서만 동작합니다.</p>
+  </section>
+
+  <section class="card" id="tool">
+
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-describedby="dropHint">
+      <input type="file" id="fileInput" multiple accept=".zip,application/zip" hidden />
+      <div class="dropzone-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 16V4" /><path d="m7 9 5-5 5 5" /><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+        </svg>
+      </div>
+      <p class="dropzone-title" data-i18n="drop.title">zip 파일을 여기로 끌어다 놓으세요</p>
+      <p class="dropzone-sub" data-i18n="drop.sub">zip 안의 파일을 이름만 바꿔서 새 zip으로 돌려드립니다. zip이 없으면 파일을 그대로 끌어다 놔도 됩니다.</p>
+      <button type="button" class="btn btn-primary" id="browseBtn" data-i18n="drop.browse">파일 선택</button>
+      <p class="dropzone-hint" id="dropHint" data-i18n="drop.hint">파일은 브라우저 밖으로 나가지 않습니다.</p>
+    </div>
+
+    <div class="filebar" id="filebar" hidden>
+      <div class="filebar-info">
+        <strong id="fileName">—</strong>
+        <span class="muted" id="fileMeta"></span>
+      </div>
+      <div class="filebar-actions">
+        <button type="button" class="btn btn-ghost" id="changeBtn" data-i18n="file.change">다른 파일</button>
+        <button type="button" class="btn btn-ghost" id="resetBtn" data-i18n="file.reset">초기화</button>
+      </div>
+    </div>
+
+    <div class="rules-head">
+      <h2 data-i18n="presets.title">빠른 시작</h2>
+      <p class="muted small" data-i18n="presets.hint">버튼을 누르면 아래 규칙이 자동으로 채워집니다. 그대로 쓰거나 값을 고쳐서 쓰세요.</p>
+    </div>
+    <div class="presets" id="presets"></div>
+
+    <div class="rules-head">
+      <h2 data-i18n="rules.title">규칙</h2>
+      <div class="rules-head-actions">
+        <button type="button" class="btn btn-ghost btn-sm" id="addRuleBtn" data-i18n="rules.add">+ 규칙 추가</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="clearRulesBtn" data-i18n="rules.clear">전체 지우기</button>
+      </div>
+    </div>
+    <p class="muted small" data-i18n="rules.hint">규칙은 위에서부터 차례대로 적용됩니다. 확장자는 '확장자' 규칙으로만 바꿉니다.</p>
+    <div class="rules" id="rules"></div>
+
+    <div class="preview-head">
+      <h2 data-i18n="preview.title">미리보기</h2>
+      <div class="preview-head-right">
+        <div class="seg" id="sortToggle" role="group" aria-label="Sort order" hidden>
+          <button type="button" class="seg-btn is-active" data-sort="natural" data-i18n="sort.natural" aria-pressed="true">자연순</button>
+          <button type="button" class="seg-btn" data-sort="original" data-i18n="sort.original" aria-pressed="false">원본순</button>
+        </div>
+        <span class="muted small" id="previewCount"></span>
+      </div>
+    </div>
+    <div class="preview" id="preview">
+      <p class="empty" data-i18n="preview.empty">파일을 넣으면 여기에 변경 결과가 표시됩니다.</p>
+    </div>
+
+    <div class="summary" id="summary" hidden></div>
+
+    <div class="actions">
+      <button type="button" class="btn btn-primary btn-lg" id="downloadBtn" disabled>
+        <span data-i18n="btn.download">이름 바꾼 zip 다운로드</span>
+      </button>
+      <p class="muted small" data-i18n="btn.downloadHint">원본 파일은 그대로 남습니다. 사본이 담긴 새 zip을 받습니다.</p>
+    </div>
+  </section>
+
+  <!-- 광고 슬롯: 애드센스 승인 후 hidden 을 지우고 아래 주석을 해제하세요.
+  <div class="ad-slot" data-ad-slot="tool-bottom">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000000" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  -->
+
+  <section class="content">
+    <h2 data-i18n="howto.title">사용 방법</h2>
+    <ol class="steps">
+      <li>
+        <strong data-i18n="howto.s1t">1. 파일 넣기</strong>
+        <p data-i18n="howto.s1d">zip 파일을 통째로 끌어다 놓거나, 이름을 바꾸고 싶은 파일들을 선택하세요.</p>
+      </li>
+      <li>
+        <strong data-i18n="howto.s2t">2. 규칙 정하기</strong>
+        <p data-i18n="howto.s2d">프리셋을 누르거나 규칙을 직접 추가하세요. 결과는 아래 표에서 바로 확인됩니다.</p>
+      </li>
+      <li>
+        <strong data-i18n="howto.s3t">3. 내려받기</strong>
+        <p data-i18n="howto.s3d">이름이 바뀐 파일이 담긴 새 zip을 받습니다. 원본은 손대지 않습니다.</p>
+      </li>
+    </ol>
+    <p><a href="guide.html" data-i18n="content.moreGuide">규칙 12가지와 실전 예시는 사용법 문서에서 자세히 볼 수 있습니다 →</a></p>
+
+    <h2 data-i18n="why.title">이런 때 씁니다</h2>
+    <ul class="bullets">
+      <li data-i18n="why.b1">휴대폰 사진이 IMG_2847.jpg 처럼 뒤죽박죽일 때 날짜·순번 순서로 정리</li>
+      <li data-i18n="why.b2">카카오톡·캡처 파일 앞에 붙은 Screenshot_, KakaoTalk_ 접두어 제거</li>
+      <li data-i18n="why.b3">납품 전에 '최종', '복사본', 공백 같은 군더더기 정리</li>
+      <li data-i18n="why.b4">웹에 올리기 전에 한글·공백·특수문자를 안전한 문자로 통일</li>
+      <li data-i18n="why.b5">확장자가 .jpeg / .JPEG / .jpg 로 섞여 있을 때 하나로 통일</li>
+    </ul>
+
+    <h2 id="faq" data-i18n="faq.title">자주 묻는 질문</h2>
+    <details>
+      <summary data-i18n="faq.q1">파일이 서버로 올라가나요?</summary>
+      <p data-i18n="faq.a1">아니요. 압축 해제와 이름 변경, 다시 압축하기까지 전부 브라우저 안에서 처리됩니다. 네트워크 전송이 없습니다.</p>
+    </details>
+    <details>
+      <summary data-i18n="faq.q2">한글 파일명이 깨지지 않나요?</summary>
+      <p data-i18n="faq.a2">윈도우에서 만든 zip은 파일명을 CP949로 저장하는 경우가 있습니다. 이 도구는 UTF-8 표시가 없으면 CP949로 다시 읽어서 한글이 깨지지 않게 처리합니다.</p>
+    </details>
+    <details>
+      <summary data-i18n="faq.q3">폴더 구조는 유지되나요?</summary>
+      <p data-i18n="faq.a3">네. zip 안의 폴더 구조는 그대로 두고 파일 이름만 바꿉니다.</p>
+    </details>
+    <details>
+      <summary data-i18n="faq.q4">얼마나 큰 파일까지 되나요?</summary>
+      <p data-i18n="faq.a4">브라우저 메모리를 쓰기 때문에 대략 500MB 이하를 권장합니다. 그보다 크면 느려지거나 실패할 수 있습니다.</p>
+    </details>
+    <p><a href="faq.html" data-i18n="content.moreFaq">질문 15개 전체 보기 →</a></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>RenameKit</span>
+    <nav class="footer-nav" aria-label="사이트 정보">
+      <a href="guide.html" data-i18n="nav.guide">사용법</a>
+      <a href="faq.html" data-i18n="nav.faq">자주 묻는 질문</a>
+      <a href="about.html" data-i18n="nav.about">소개</a>
+      <a href="privacy.html" data-i18n="nav.privacy">개인정보처리방침</a>
+    </nav>
+    <span class="muted" data-i18n="footer.note">모든 처리는 브라우저에서 이루어집니다.</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "RenameKit",
+      "alternateName": "파일명 일괄 변경",
+      "url": "https://renamekit.pages.dev/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "웹 브라우저 (Windows, macOS, Linux, Android, iOS)",
+      "browserRequirements": "자바스크립트가 켜진 최신 브라우저",
+      "inLanguage": "ko",
+      "description": "zip 파일을 올리면 규칙에 따라 파일명을 일괄 변경해 새 zip으로 돌려주는 브라우저 도구. 파일이 서버로 전송되지 않는다.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+      "featureList": [
+        "앞·뒤 접두어 붙이기와 지우기",
+        "글자 수로 지우기",
+        "번호 매기기와 날짜 형식 통일",
+        "확장자 변경",
+        "공백·특수문자 정리",
+        "CP949 한글 파일명 처리",
+        "자연순 정렬"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "파일이 서버로 올라가나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "아니요. 압축 해제와 이름 변경, 다시 압축하기까지 전부 브라우저 안에서 처리됩니다. 네트워크 전송이 없습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "한글 파일명이 깨지지 않나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "윈도우에서 만든 zip은 파일명을 CP949로 저장하는 경우가 있습니다. 이 도구는 UTF-8 표시가 없으면 CP949로 다시 읽어서 한글이 깨지지 않게 처리합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "폴더 구조는 유지되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네. zip 안의 폴더 구조는 그대로 두고 파일 이름만 바꿉니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "얼마나 큰 파일까지 되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "브라우저 메모리를 쓰기 때문에 대략 500MB 이하를 권장합니다. 그보다 크면 느려지거나 실패할 수 있습니다."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script src="js/vendor/fflate.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/zip.js"></script>
+<script src="js/rename.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

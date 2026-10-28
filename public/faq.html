@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>자주 묻는 질문 15개 — 파일명 일괄 변경 | RenameKit</title>
+<meta name="description" content="파일이 서버로 전송되는지, 한글 파일명이 깨지지 않는지, 암호 걸린 zip과 4GB 이상 파일, 폴더 구조 유지, 이름 중복 처리까지 자주 묻는 질문 15개를 정리했습니다." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#4f46e5" />
+<meta property="og:title" content="자주 묻는 질문 15개 — 파일명 일괄 변경" />
+<meta property="og:description" content="서버 전송, 한글 깨짐, 암호 걸린 zip, 대용량 파일, 폴더 구조까지 15개 질문으로 정리했습니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://renamekit.pages.dev/faq.html" />
+<meta property="og:site_name" content="RenameKit" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:image" content="https://renamekit.pages.dev/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="canonical" href="https://renamekit.pages.dev/faq.html" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="./">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <span class="brand-name">RenameKit</span>
+    </a>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <a href="./">도구</a>
+      <a href="guide.html">사용법</a>
+      <a href="faq.html" aria-current="page">자주 묻는 질문</a>
+      <a href="about.html">소개</a>
+    </nav>
+    <div class="header-right">
+      <a class="btn btn-primary btn-sm" href="./">파일명 바꾸기</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="doc">
+    <h1>자주 묻는 질문</h1>
+    <p class="doc-meta">최종 수정 2026년 10월 28일</p>
+
+    <p>
+      실제로 가장 많이 들어오는 질문 15개를 모았습니다. 여기에 없는 내용은
+      <a href="guide.html">사용법 문서</a>를 먼저 확인해 주세요.
+    </p>
+
+    <h2>기본</h2>
+
+    <h3>1. 파일이 서버로 올라가나요?</h3>
+    <p>
+      <strong>아니요.</strong> 압축 풀기, 이름 변경, 다시 압축하기까지 전부 브라우저 안에서
+      처리됩니다. 파일 내용이 네트워크로 전송되는 코드는 들어 있지 않습니다.
+      개발자 도구의 네트워크 탭을 열어두고 사용해보면 전송이 없다는 것을 직접 확인할 수 있습니다.
+    </p>
+
+    <h3>2. 설치가 필요한가요?</h3>
+    <p>
+      필요 없습니다. 브라우저로 주소를 열면 바로 쓸 수 있습니다. 프로그램 설치나 회원가입도
+      없습니다.
+    </p>
+
+    <h3>3. 무료인가요?</h3>
+    <p>
+      모든 기능이 무료입니다. 운영 비용은 사이트에 표시되는 광고로 충당합니다.
+    </p>
+
+    <h3>4. 인터넷이 없어도 되나요?</h3>
+    <p>
+      페이지를 한 번 연 뒤에는 대부분의 기능이 동작하지만, 브라우저가 캐시를 비우면 다시
+      접속해야 합니다. 파일 처리는 네트워크와 무관합니다.
+    </p>
+
+    <h2>파일과 압축</h2>
+
+    <h3>5. zip 없이 파일만 넣어도 되나요?</h3>
+    <p>
+      됩니다. 파일 여러 개를 그대로 끌어다 놓으면 이름을 바꾼 뒤 zip 하나로 묶어서
+      내려받게 됩니다.
+    </p>
+
+    <h3>6. 폴더 구조가 유지되나요?</h3>
+    <p>
+      유지됩니다. zip 안의 하위 폴더는 그대로 두고 파일 이름만 바뀝니다.
+      <code>사진/IMG_0001.jpg</code>는 <code>사진/photo_001.jpg</code>가 됩니다.
+    </p>
+
+    <h3>7. 암호가 걸린 zip도 되나요?</h3>
+    <p>
+      안 됩니다. 암호를 푸는 기능은 넣지 않았습니다. 압축을 먼저 푼 뒤, 폴더째 다시 zip으로
+      묶어서 사용해 주세요.
+    </p>
+
+    <h3>8. 7z나 rar 파일도 되나요?</h3>
+    <p>
+      zip만 지원합니다. 7z·rar·alz는 브라우저에서 다루기 어려워 대상에서 제외했습니다.
+      반디집 같은 프로그램으로 zip으로 변환한 뒤 사용해 주세요.
+    </p>
+
+    <h3>9. 4GB가 넘는 zip도 되나요?</h3>
+    <p>
+      ZIP64 형식은 아직 지원하지 않습니다. 브라우저 메모리를 쓰는 구조라 4GB 이상은 어차피
+      현실적으로 어렵습니다. 500MB 이하를 권장합니다.
+    </p>
+
+    <h3>10. 파일이 몇 개까지 되나요?</h3>
+    <p>
+      개수 제한은 없지만, 1,000개를 넘으면 미리보기 표시가 느려집니다. 아주 많을 때는
+      폴더 단위로 나눠서 처리하는 편이 안전합니다.
+    </p>
+
+    <h2>한글과 파일 이름</h2>
+
+    <h3>11. 한글 파일명이 깨지지 않나요?</h3>
+    <p>
+      윈도우에서 만든 zip은 파일명을 <strong>CP949</strong>로 저장하는 경우가 있습니다.
+      이 도구는 zip 항목에 UTF-8 표시가 없으면 CP949로 다시 읽어서 한글이 깨지지 않게
+      처리합니다. 다만 아주 예외적인 방식으로 만들어진 zip은 실패할 수 있습니다.
+    </p>
+
+    <h3>12. 이름이 너무 길면 어떻게 되나요?</h3>
+    <p>
+      윈도우는 경로 전체 260자, 맥은 파일명 255바이트 제한이 있습니다. 미리보기에서
+      이름이 잘린 줄에는 <span class="chip warn">확인</span> 표시가 붙습니다.
+      <strong>길이 자르기</strong> 규칙으로 미리 줄여두면 안전합니다.
+    </p>
+
+    <h3>13. 확장자도 자동으로 바뀌나요?</h3>
+    <p>
+      아닙니다. 확장자는 <strong>확장자 변경</strong> 규칙으로만 바뀝니다. 다른 규칙은
+      확장자를 건드리지 않습니다. 이렇게 설계한 이유는, 실수로 확장자가 사라져 파일이
+      열리지 않는 사고를 막기 위해서입니다.
+    </p>
+
+    <h3>14. 이름이 중복되면 어떻게 되나요?</h3>
+    <p>
+      미리보기에 <span class="chip error">오류</span>로 표시됩니다. 그 상태로 내려받으면
+      한 파일이 사라질 수 있으니, 오류가 없는 상태에서만 다운로드하세요.
+      보통 <strong>번호 매기기</strong> 규칙을 넣으면 해결됩니다.
+    </p>
+
+    <h2>정렬과 번호</h2>
+
+    <h3>15. 자연순과 원본순은 무엇이 다른가요?</h3>
+    <p>
+      <strong>자연순</strong>은 사람이 읽기 좋은 순서로, 숫자를 크기대로 비교합니다
+      (<code>1, 2, 3, 10</code>). <strong>원본순</strong>은 zip 안에 실제로 저장된 순서입니다.
+      번호 매기기는 <strong>화면에 보이는 순서</strong>를 따르므로, 번호가
+      <code>1, 10, 2</code>처럼 붙는다면 정렬이 원본순으로 되어 있는지 확인해 보세요.
+      기본값은 자연순입니다.
+    </p>
+
+    <h2>개인정보와 광고</h2>
+
+    <h3>광고와 쿠키는 어떻게 되나요?</h3>
+    <p>
+      사이트 운영을 위해 Google AdSense 광고가 표시될 수 있고, 이 과정에서 Google과 제3자
+      판매자가 쿠키를 사용합니다. 자세한 내용과 거부 방법은
+      <a href="privacy.html">개인정보처리방침</a>에 정리해 두었습니다.
+      <strong>파일 내용은 광고와 무관하게 어디에도 전송되지 않습니다.</strong>
+    </p>
+
+    <h2>더 알아보기</h2>
+    <ul>
+      <li><a href="guide.html">사용법 — 규칙 12가지와 실전 예시</a></li>
+      <li><a href="about.html">사이트 소개 — 동작 원리</a></li>
+      <li><a href="privacy.html">개인정보처리방침</a></li>
+    </ul>
+
+    <a class="back" href="./">← 파일명 바꾸러 가기</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>RenameKit</span>
+    <nav class="footer-nav" aria-label="사이트 정보">
+      <a href="guide.html">사용법</a>
+      <a href="faq.html">자주 묻는 질문</a>
+      <a href="about.html">소개</a>
+      <a href="privacy.html">개인정보처리방침</a>
+    </nav>
+    <span class="muted">모든 처리는 브라우저에서 이루어집니다.</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "ko",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "파일이 서버로 올라가나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "아니요. 압축 풀기, 이름 변경, 다시 압축하기까지 전부 브라우저 안에서 처리됩니다. 파일 내용이 네트워크로 전송되는 코드는 들어 있지 않습니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "설치가 필요한가요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "필요 없습니다. 브라우저로 주소를 열면 바로 쓸 수 있습니다. 프로그램 설치나 회원가입도 없습니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "무료인가요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "모든 기능이 무료입니다. 운영 비용은 사이트에 표시되는 광고로 충당합니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "zip 없이 파일만 넣어도 되나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "됩니다. 파일 여러 개를 그대로 끌어다 놓으면 이름을 바꾼 뒤 zip 하나로 묶어서 내려받게 됩니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "폴더 구조가 유지되나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "유지됩니다. zip 안의 하위 폴더는 그대로 두고 파일 이름만 바뀝니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "암호가 걸린 zip도 되나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "안 됩니다. 암호를 푸는 기능은 넣지 않았습니다. 압축을 먼저 푼 뒤 폴더째 다시 zip으로 묶어서 사용해 주세요." }
+    },
+    {
+      "@type": "Question",
+      "name": "7z나 rar 파일도 되나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "zip만 지원합니다. 7z, rar, alz는 브라우저에서 다루기 어려워 대상에서 제외했습니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "4GB가 넘는 zip도 되나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "ZIP64 형식은 아직 지원하지 않습니다. 브라우저 메모리를 쓰는 구조라 500MB 이하를 권장합니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "한글 파일명이 깨지지 않나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "윈도우에서 만든 zip은 파일명을 CP949로 저장하는 경우가 있습니다. 이 도구는 UTF-8 표시가 없으면 CP949로 다시 읽어서 한글이 깨지지 않게 처리합니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "확장자도 자동으로 바뀌나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "아닙니다. 확장자는 확장자 변경 규칙으로만 바뀝니다. 실수로 확장자가 사라지는 사고를 막기 위한 설계입니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "이름이 중복되면 어떻게 되나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "미리보기에 오류로 표시됩니다. 그 상태로 내려받으면 한 파일이 사라질 수 있으니, 오류가 없는 상태에서만 다운로드하세요." }
+    },
+    {
+      "@type": "Question",
+      "name": "자연순과 원본순은 무엇이 다른가요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "자연순은 숫자를 크기대로 비교하는 사람이 읽기 좋은 순서이고, 원본순은 zip 안에 실제로 저장된 순서입니다. 번호 매기기는 화면에 보이는 순서를 따릅니다." }
+    }
+  ]
+}
+</script>
+</body>
+</html>
